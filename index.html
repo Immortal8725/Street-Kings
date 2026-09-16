@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#08030f" />
+    <meta
+      name="description"
+      content="Street Kings — a night-city arcade racer. Dodge traffic, burn nitro, own the street."
+    />
+    <title>Street Kings</title>
+    <link rel="icon" href="src/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game" aria-label="Street Kings race view"></canvas>
+
+      <div id="scanlines" aria-hidden="true"></div>
+      <div id="vignette" aria-hidden="true"></div>
+
+      <header id="hud" class="hud hidden">
+        <div class="hud-col">
+          <div class="hud-stat">
+            <span class="hud-label">Score</span>
+            <span id="hud-score" class="hud-value">0</span>
+          </div>
+          <div class="hud-stat">
+            <span class="hud-label">Distance</span>
+            <span id="hud-distance" class="hud-value">0 m</span>
+          </div>
+        </div>
+        <div class="hud-col hud-col-right">
+          <div class="hud-stat">
+            <span class="hud-label">Speed</span>
+            <span id="hud-speed" class="hud-value">0</span>
+          </div>
+          <div class="hud-stat">
+            <span class="hud-label">Best</span>
+            <span id="hud-best" class="hud-value">0</span>
+          </div>
+        </div>
+        <div class="nitro-wrap">
+          <span class="hud-label">Nitro</span>
+          <div class="nitro-track">
+            <div id="hud-nitro" class="nitro-fill"></div>
+          </div>
+        </div>
+      </header>
+
+      <div id="toast" class="toast hidden" aria-live="polite"></div>
+
+      <div id="touch" class="touch hidden">
+        <button type="button" id="btn-left" class="touch-btn" aria-label="Steer left">◀</button>
+        <button type="button" id="btn-nitro" class="touch-btn touch-nitro" aria-label="Nitro">NITRO</button>
+        <button type="button" id="btn-right" class="touch-btn" aria-label="Steer right">▶</button>
+      </div>
+
+      <button type="button" id="btn-mute" class="mute" aria-label="Toggle sound" title="Toggle sound">
+        ♪
+      </button>
+
+      <div id="overlay" class="overlay">
+        <section id="title-screen" class="panel">
+          <p class="kicker">Night City · Endless Run</p>
+          <h1>Street Kings</h1>
+          <p class="tagline">One street. No mercy. Own the night.</p>
+          <ul class="howto">
+            <li>Steer with <kbd>A</kbd> <kbd>D</kbd> or arrow keys</li>
+            <li>Hold <kbd>W</kbd> / <kbd>↑</kbd> / <kbd>Shift</kbd> for nitro</li>
+            <li>Dodge traffic — speed ramps up the longer you survive</li>
+          </ul>
+          <p id="title-best" class="best-line"></p>
+          <button type="button" id="btn-play" class="cta">Play</button>
+          <p class="hint">Enter or Space also starts</p>
+        </section>
+
+        <section id="gameover-screen" class="panel hidden">
+          <p class="kicker crash">Wrecked</p>
+          <h1>Game Over</h1>
+          <p class="tagline" id="go-flavor">The street keeps your name for a second, then forgets.</p>
+          <dl class="results">
+            <div>
+              <dt>Score</dt>
+              <dd id="go-score">0</dd>
+            </div>
+            <div>
+              <dt>Distance</dt>
+              <dd id="go-distance">0 m</dd>
+            </div>
+            <div>
+              <dt>Best</dt>
+              <dd id="go-best">0</dd>
+            </div>
+          </dl>
+          <p id="go-record" class="record hidden">New night record</p>
+          <button type="button" id="btn-retry" class="cta">Run it back</button>
+          <p class="hint">Enter or Space to restart</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="src/audio.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>
