@@ -292,6 +292,7 @@
       this.dom.titleScreen.classList.add("hidden");
       this.dom.gameoverScreen.classList.add("hidden");
       this.dom.hud.classList.remove("hidden");
+      this.dom.toast.classList.add("hidden");
       this.dom.record.classList.add("hidden");
       this.showTouchIfNeeded();
       this.audio.go();
@@ -301,8 +302,9 @@
     }
 
     showTouchIfNeeded() {
-      const coarse = global.matchMedia && global.matchMedia("(hover: none), (pointer: coarse)").matches;
-      this.dom.touch.classList.toggle("hidden", !coarse);
+      const coarse = global.matchMedia && global.matchMedia("(pointer: coarse)").matches;
+      const fine = global.matchMedia && global.matchMedia("(pointer: fine)").matches;
+      this.dom.touch.classList.toggle("hidden", Boolean(fine) || !coarse);
     }
 
     crash() {
@@ -323,6 +325,8 @@
         saveBest(this.best);
       }
       this.state = "gameover";
+      this.dom.hud.classList.add("hidden");
+      this.dom.toast.classList.add("hidden");
       this.dom.goScore.textContent = String(this.score);
       this.dom.goDistance.textContent = Math.floor(this.distance) + " m";
       this.dom.goBest.textContent = String(this.best);
