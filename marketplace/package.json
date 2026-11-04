@@ -1,0 +1,22 @@
+{
+  "name": "street-market",
+  "version": "0.1.0",
+  "private": true,
+  "description": "South African street-market marketplace API. In-memory NestJS scaffold.",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/main.js",
+    "flow": "npm run build && node dist/flow/run-flow.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.4.15",
+    "@nestjs/core": "^10.4.15",
+    "@nestjs/platform-express": "^10.4.15",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
