@@ -74,3 +74,7 @@ Vanilla HTML5 Canvas + CSS + JavaScript. Chosen so the MVP stays small, readable
 ## Browser support
 
 Recent Chromium, Firefox, and Safari. Desktop keyboard is the intended feel; touch controls are there for phones and tablets.
+
+## Street market API
+
+`marketplace/` is a NestJS scaffold for a South African street-market flow: stall setup, discovery, chat, checkout, delivery, and restock. See [marketplace/README.md](marketplace/README.md).
